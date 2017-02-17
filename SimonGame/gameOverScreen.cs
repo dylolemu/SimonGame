@@ -33,7 +33,7 @@ namespace SimonGame
             {
                 Application.Exit();
             }
-            if (e.KeyCode == Keys.Down)
+            if (e.KeyCode == Keys.Space)
             {
                 //close currents screen
                 Form f = this.FindForm();

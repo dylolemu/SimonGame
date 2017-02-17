@@ -47,7 +47,7 @@ namespace SimonGame
         {
             if (e.KeyCode == Keys.Escape) { Application.Exit(); }
 
-            if (e.KeyCode == Keys.Down)
+            if (e.KeyCode == Keys.Space)
             {
                 Form f = this.FindForm();
                 f.Controls.Remove(this);

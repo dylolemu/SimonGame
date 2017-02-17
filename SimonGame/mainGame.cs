@@ -117,10 +117,11 @@ namespace SimonGame
             if (compPlay == false)
             {
                 //turns approprite light on when corresponding button is clicked
-                if (e.KeyCode == Keys.Up) { colors(Properties.Resources.buttOn1, yellow); }
-                if (e.KeyCode == Keys.Down) { colors(Properties.Resources.buttOn3, green); }
-                if (e.KeyCode == Keys.Left) { colors(Properties.Resources.buttOn4, blue); }
-                if (e.KeyCode == Keys.Right) { colors(Properties.Resources.buttOn2, red); }
+                //keys are all for arcade
+                if (e.KeyCode == Keys.N) { colors(Properties.Resources.buttOn1, yellow); }
+                if (e.KeyCode == Keys.Space) { colors(Properties.Resources.buttOn3, green); }
+                if (e.KeyCode == Keys.B) { colors(Properties.Resources.buttOn4, blue); }
+                if (e.KeyCode == Keys.M) { colors(Properties.Resources.buttOn2, red); }
             }
         }
 
@@ -131,10 +132,10 @@ namespace SimonGame
             if (compPlay == false)
             {
                 //checks appropriate button clicked with item on list
-                if (e.KeyCode == Keys.Up) { playerTurn(1); }
-                if (e.KeyCode == Keys.Down) { playerTurn(3); }
-                if (e.KeyCode == Keys.Left) { playerTurn(4); }
-                if (e.KeyCode == Keys.Right) { playerTurn(2); }
+                if (e.KeyCode == Keys.N) { playerTurn(1); }
+                if (e.KeyCode == Keys.Space) { playerTurn(3); }
+                if (e.KeyCode == Keys.B) { playerTurn(4); }
+                if (e.KeyCode == Keys.M) { playerTurn(2); }
             }
 
             //once button is released all lights turn off

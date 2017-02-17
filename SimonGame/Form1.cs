@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Simon Game created by: Dylon Lemus
+//February 17, 2017
+//Description: This game is a aracade version of the well-known Simon Game
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
