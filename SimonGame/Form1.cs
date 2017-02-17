@@ -26,11 +26,15 @@ namespace SimonGame
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
             // Create an instance of the MainScreen
             newGame ng = new newGame();
 
             // Add the User Control to the Form
             this.Controls.Add(ng);
+
+            ng.Location = new Point((this.Width - ng.Width) / 2, (this.Height - ng.Height) / 2);
+
         }
 
     }

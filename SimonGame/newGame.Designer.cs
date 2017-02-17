@@ -46,7 +46,7 @@
             this.DoubleBuffered = true;
             this.Name = "newGame";
             this.Size = new System.Drawing.Size(500, 500);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.newGame_KeyUp);
+            this.Load += new System.EventHandler(this.newGame_Load);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.newGame_PreviewKeyDown);
             this.ResumeLayout(false);
 

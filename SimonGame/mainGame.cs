@@ -37,11 +37,10 @@ namespace SimonGame
         {
             //adds one random number to the list
             Form1.pattern.Add(Form1.rand.Next(1, 5));
-            if (compPlay == true)
-            {
-                //plays computer turn method
-                new Thread(computerTurn).Start();
-            }
+
+            //plays computer turn method
+            new Thread(computerTurn).Start();
+
             //sets player choice count to 0
             j = 0;
             this.Focus();
@@ -49,7 +48,7 @@ namespace SimonGame
 
         public void computerTurn()
         {
-            Thread.Sleep(600);
+            Thread.Sleep(700);
 
             if (compPlay == true)
             {
@@ -61,6 +60,7 @@ namespace SimonGame
                     if (Form1.pattern[i] == 2) { colors(Properties.Resources.buttOn2, red); }
                     if (Form1.pattern[i] == 3) { colors(Properties.Resources.buttOn3, green); }
                     if (Form1.pattern[i] == 4) { colors(Properties.Resources.buttOn4, blue); }
+
                     Thread.Sleep(250);
 
                     //changes background to all buttons off
@@ -94,6 +94,8 @@ namespace SimonGame
 
                 // Add the User Control to the Form
                 f.Controls.Add(gg);
+
+                gg.Location = new Point((f.Width - gg.Width) / 2, (f.Height - gg.Height) / 2);
             }
 
             //if you have completed the entire list choices correctly
@@ -108,7 +110,6 @@ namespace SimonGame
                 new Thread(computerTurn).Start();
                 j = 0;
             }
-
         }
 
         private void mainGame_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -116,32 +117,25 @@ namespace SimonGame
             if (compPlay == false)
             {
                 //turns approprite light on when corresponding button is clicked
-                if (e.KeyCode == Keys.Up)
-                {
-                    colors(Properties.Resources.buttOn1, yellow);
-                    playerTurn(1);
-                }
-                if (e.KeyCode == Keys.Down)
-                {
-                    colors(Properties.Resources.buttOn3, green);
-                    playerTurn(3);
-                }
-                if (e.KeyCode == Keys.Left)
-                {
-                    colors(Properties.Resources.buttOn4, blue);
-                    playerTurn(4);
-                }
-                if (e.KeyCode == Keys.Right)
-                {
-                    colors(Properties.Resources.buttOn2, red);
-                    playerTurn(2);
-                }
+                if (e.KeyCode == Keys.Up) { colors(Properties.Resources.buttOn1, yellow); }
+                if (e.KeyCode == Keys.Down) { colors(Properties.Resources.buttOn3, green); }
+                if (e.KeyCode == Keys.Left) { colors(Properties.Resources.buttOn4, blue); }
+                if (e.KeyCode == Keys.Right) { colors(Properties.Resources.buttOn2, red); }
             }
         }
 
         private void mainGame_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) { Application.Exit(); }
+
+            if (compPlay == false)
+            {
+                //checks appropriate button clicked with item on list
+                if (e.KeyCode == Keys.Up) { playerTurn(1); }
+                if (e.KeyCode == Keys.Down) { playerTurn(3); }
+                if (e.KeyCode == Keys.Left) { playerTurn(4); }
+                if (e.KeyCode == Keys.Right) { playerTurn(2); }
+            }
 
             //once button is released all lights turn off
             this.BackgroundImage = Properties.Resources.buttOffAll;

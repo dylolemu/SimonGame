@@ -17,23 +17,23 @@ namespace SimonGame
         public newGame()
         {
             InitializeComponent();
+
+
             start = false;
             Form1.pattern.Clear();
-            Focus();
         }
 
         bool start;
 
-
-        private void newGame_KeyUp(object sender, KeyEventArgs e)
+        private void newGame_Load(object sender, EventArgs e)
         {
-       
+            Focus();
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (start == false)
             {
+                //green button blinks on and off
                 this.BackgroundImage = Properties.Resources.gameStart2;
                 Refresh();
                 Thread.Sleep(200);
@@ -45,22 +45,22 @@ namespace SimonGame
 
         private void newGame_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
-            if (start == false)
+            if (e.KeyCode == Keys.Escape) { Application.Exit(); }
+
+            if (e.KeyCode == Keys.Down)
             {
-                if (e.KeyCode == Keys.Escape) { Application.Exit(); }
+                Form f = this.FindForm();
+                f.Controls.Remove(this);
 
-                if (e.KeyCode == Keys.Down)
-                {
-                    Form f = this.FindForm();
-                    f.Controls.Remove(this);
+                mainGame ss = new mainGame();
 
-                    mainGame ss = new mainGame();
+                // Add the User Control to the Form
+                f.Controls.Add(ss);
 
-                    // Add the User Control to the Form
-                    f.Controls.Add(ss);
+                //places next screen in correct location
+                ss.Location = new Point((f.Width - ss.Width) / 2, (f.Height - ss.Height) / 2);
 
-                    start = true;
-                }
+                start = true;
             }
         }
     }
